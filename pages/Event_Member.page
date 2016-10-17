@@ -1,0 +1,46 @@
+<apex:page standardController="Expense__c" renderAs="pdf" extensions="ExpenseMemberExtension" >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h4>Expense During {!Expense__c.Event__c} on {!Expense__c.DateOfContribution__c}</h4>
+  <html>
+        <head/>
+        <body>
+            <table border="2"  width="600px" Class="center" >
+              <tr>
+                 <td>TOTAL AMOUNT</td>
+                 <td>{!Expense__c.Amount__c}</td>
+              </tr>
+              <tr>
+                    <td>EVENT DATE</td>
+                    <td>{!Expense__c.DateOfContribution__c} </td>
+              </tr>
+              <tr>
+                    <td>EVENT</td>
+                    <td>{!Expense__c.Event__c}</td>
+              </tr>
+              <tr>
+                    <td>TOTAL CONTRIBUTION</td>
+                    <td>{!Expense__c.UpdatedAmount__c} </td>
+              </tr>
+              
+            
+            </table> 
+            <h5>Expenses Details</h5>
+            <table border="2"  width="600px" Class="center">
+             <tr>
+                <td> Expenses </td>
+                <td> Name </td>
+             </tr>   
+            <apex:repeat value="{!expenseMember}" var="i">
+             <tr><td> {!i.AmountOfContribution__c}</td>
+                 <td> {!i.MemberId__r.FirstName__c}</td>
+             </tr>    
+            </apex:repeat>  
+            </table> 
+
+        </body>
+    </html>
+  
+  
+ 
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

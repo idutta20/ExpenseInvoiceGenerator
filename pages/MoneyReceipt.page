@@ -1,0 +1,24 @@
+<apex:page standardController="ExpenseOfMember__c" renderAs="pdf" applyBodyTag="false">
+    <head>
+        <style> 
+            body { font-family: 'Arial Unicode MS'; }
+            .MoneyReceipt { font: bold 18px; color: red; }  
+        </style>
+    </head>
+    <body>
+        <center>
+        <h1>Money Receipt</h1>
+     
+        <apex:panelGrid columns="2" border="2" width="100%">
+            <apex:outputText value="{!$ObjectType.ExpenseOfMember__c.Fields.MemberId__c.label}" styleClass="MoneyReceipt"/>
+            <apex:outputfield value="{!ExpenseOfMember__c.MemberId__r.FirstName__c}"/>
+            <apex:outputText value="{!$ObjectType.ExpenseOfMember__c.Fields.ExpenseId__c.label}" styleClass="MoneyReceipt"/>
+            <apex:outputField value="{!ExpenseOfMember__c.ExpenseId__r.Event__c}"/>
+            <apex:outputText value="{!$ObjectType.ExpenseOfMember__c.Fields.AmountOfContribution__c.label}" styleClass="MoneyReceipt"/>
+            <apex:outputText value="{!ExpenseOfMember__c.AmountOfContribution__c}" />
+            
+            <apex:outputText value="{!NOW()}"></apex:outputText>
+        </apex:panelGrid>
+        </center>
+    </body>
+</apex:page>
